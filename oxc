@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Open Xcode with workspace, project, or file
+# from the command line
+# https://github.com/jasonmccreary/oxc
+#
+# oxc [file]
+
+xopen () {
+    file=''
+    open -a Xcode ${1-file}
+    exit 0
+}
+
+# was 'file' parameter passed
+if [ -n "$1" ]; then
+    xopen "$1"
+fi
+
+# is there an .xcworkspace
+workspaces=(`find . -maxdepth 1 -name '*.xcworkspace'`)
+if [ ${#workspaces[@]} -gt 0 ]; then
+    xopen ${workspaces[0]}
+fi
+
+# is there an .xcodeproj
+projects=(`find . -maxdepth 1 -name '*.xcodeproj'`)
+if [ ${#projects[@]} -gt 0 ]; then
+    xopen ${projects[0]}
+fi
+
+# just open Xcode
+xopen
+exit 0
