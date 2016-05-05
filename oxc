@@ -7,8 +7,7 @@
 # oxc [file]
 
 xopen () {
-    file=''
-    open -a Xcode ${1-file}
+    open -a Xcode $1
     exit 0
 }
 
