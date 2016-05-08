@@ -10,8 +10,12 @@ Type `oxc` to open Xcode with a workspace, project, or file from the command lin
     > open README.md in Xcode
 
     $ oxc
-    > if the current directory contains a workspace or project, open it in Xcode
-    > otherwise, just open Xcode
+    > open Xcode workspace or project in the current directory
+    > otherwise, open Xcode
+
+### Demo
+
+![oxc Demo](https://s3.amazonaws.com/pocketbracket/images/oxc-demo.gif)
 
 ## Installation
 
@@ -19,7 +23,7 @@ Type `oxc` to open Xcode with a workspace, project, or file from the command lin
 npm install --global oxc
 ```
 
-If you don't want to [install Node](https://nodejs.org/), you can simply download [oxc](https://raw.githubusercontent.com/jasonmccreary/oxc/master/oxc) to a directory in your `PATH`.
+If you don't want to [install Node](https://nodejs.org/), you can simply download [oxc](https://raw.githubusercontent.com/jasonmccreary/oxc/master/oxc) to one of the directories in your `PATH`.
 
 ## License
 
