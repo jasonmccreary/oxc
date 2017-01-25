@@ -7,7 +7,7 @@
 # oxc [file]
 
 xopen () {
-    open -a Xcode $1
+    open -a Xcode "$1"
     exit 0
 }
 
@@ -17,15 +17,25 @@ if [ -n "$1" ]; then
 fi
 
 # is there an .xcworkspace
-workspaces=(`find . -maxdepth 1 -name '*.xcworkspace'`)
+workspaces=()
+while IFS=  read -r -d $'\0'; do
+    workspaces+=("$REPLY")
+done < <(find . -name '*.xcworkspace' -print0)
+
 if [ ${#workspaces[@]} -gt 0 ]; then
-    xopen ${workspaces[0]}
+    xopen "${workspaces[0]}"
+    exit 0
 fi
 
 # is there an .xcodeproj
-projects=(`find . -maxdepth 1 -name '*.xcodeproj'`)
+projects=()
+while IFS=  read -r -d $'\0'; do
+    projects+=("$REPLY")
+done < <(find . -name '*.xcodeproj' -print0)
+
 if [ ${#projects[@]} -gt 0 ]; then
-    xopen ${projects[0]}
+    xopen "${projects[0]}"
+    exit 0
 fi
 
 # just open Xcode
